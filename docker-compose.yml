@@ -7,5 +7,6 @@ services:
     ports:
       - 0.0.0.0:111:111
       - 0.0.0.0:2049:2049
+    network_mode: host
     volumes:
       - /srv/nfs/shared/:/srv/nfs/shared/

@@ -15,7 +15,9 @@ RUN groupadd -g 2000 nfs \
 RUN mkdir -p /srv/nfs/shared \
     && chown nfs:nfs /srv/nfs/shared \
     && chmod 777 /srv/nfs/shared \
-    && echo "/srv/nfs/shared 0.0.0.0/0(rw,sync,no_subtree_check)" >> /etc/exports \
-    && exportfs -ra
+    && echo "/srv/nfs/shared 0.0.0.0/0(rw,sync,no_subtree_check)" >> /etc/exports
 
-ENTRYPOINT ["tail", "-f", "/dev/null"]
+EXPOSE 2049/tcp 2049/udp 111/tcp 111/udp
+
+CMD ["/usr/sbin/rpcbind", "-w", "&&", "/usr/sbin/rpc.nfsd", "&&", "/usr/sbin/exportfs", "-r", "&&", "tail", "-f", "/dev/null"]
+

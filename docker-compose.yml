@@ -21,4 +21,4 @@ volumes:
     driver_opts:
       type: "nfs"
       o: "addr=192.168.2.142,nfsvers=4,hard,rw"
-      device: ":/export"
+      device: ":/srv/nfs/shared"

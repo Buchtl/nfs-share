@@ -2,8 +2,10 @@
 
 services:
   nfs-server:
-    image: nfs-server:01
     build: .
+    image: nfs-server:01
+    container_name: nfs-server
+    privileged: true
     ports:
       - 0.0.0.0:111:111
       - 0.0.0.0:2049:2049

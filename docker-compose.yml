@@ -8,4 +8,4 @@ services:
       - 0.0.0.0:111:111
       - 0.0.0.0:2049:2049
     volumes:
-      - /srv/nfs/shared/:/mnt/nfs/shared/
+      - /srv/nfs/shared/:/srv/nfs/shared/

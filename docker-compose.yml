@@ -5,13 +5,20 @@ services:
     build: .
     image: nfs-server:01
     container_name: nfs-server
-    privileged: true
-    ports:
-    - "111:111/tcp"
-    - "111:111/udp"
-    - "2049:2049/tcp"
-    - "2049:2049/udp"
-    - "20048:20048/tcp"
-    - "20048:20048/udp"
+    #ports:
+    #- "111:111/tcp"
+    #- "111:111/udp"
+    #- "2049:2049/tcp"
+    #- "2049:2049/udp"
+    #- "20048:20048/tcp"
+    #- "20048:20048/udp"
     volumes:
-      - /srv/nfs/shared/:/srv/nfs/shared/
+      #- /srv/nfs/shared/:/srv/nfs/shared/
+      - nfs-filestorage:/filestorge
+volumes:
+  nfs-filestorage:
+    driver: local
+    driver_opts:
+      type: "nfs"
+      o: "addr=192.168.2.142,nfsvers=4,hard,rw"
+      device: ":/export"

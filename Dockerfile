@@ -1,19 +1,22 @@
 FROM ubuntu:24.04
 
-ARG PASSWORD
+#ARG PASSWORD
 
-RUN apt update -y \
-    && apt upgrade -y
+#RUN apt update -y \
+#    && apt upgrade -y
 
 #RUN apt install -y nfs-kernel-server
-RUN apt install -y openssl && \
-    apt clean && \
-    rm -rf /var/lib/apt/lists/*
+#RUN apt install -y openssl && \
+#    apt clean && \
+#    rm -rf /var/lib/apt/lists/*
 
-RUN groupadd -g 2000 nfs \
-    && echo ${PASSWORD} | openssl passwd -1 -stdin \
-    && ENCRPYTED_PASSWORD=`echo "${PASSWORD}" | openssl passwd -1 -stdin` \
-    && useradd -rm -d /home/nfs -s /bin/bash -u 2000 nfs -g nfs -p ${ENCRPYTED_PASSWORD}
+RUN groupadd -g 2000 nfs && \
+    useradd -rm -d /home/nfs -s /bin/bash -u 2000 nfs -g nfs
+
+#RUN groupadd -g 2000 nfs \
+#  && echo ${PASSWORD} | openssl passwd -1 -stdin \
+#  && ENCRPYTED_PASSWORD=`echo "${PASSWORD}" | openssl passwd -1 -stdin` \
+#  && useradd -rm -d /home/nfs -s /bin/bash -u 2000 nfs -g nfs -p ${ENCRPYTED_PASSWORD}
 
 #RUN mkdir -p /srv/nfs/shared \
 #    && chown nfs:nfs /srv/nfs/shared \

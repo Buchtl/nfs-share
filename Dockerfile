@@ -19,5 +19,5 @@ RUN mkdir -p /srv/nfs/shared \
 
 EXPOSE 2049/tcp 2049/udp 111/tcp 111/udp
 
-CMD ["/usr/sbin/rpcbind", "-w", "&&", "/usr/sbin/rpc.nfsd", "&&", "/usr/sbin/exportfs", "-r", "&&", "tail", "-f", "/dev/null"]
+CMD [CMD bash -c "rpcbind && rpc.nfsd && exportfs -r && tail -f /dev/null"]
 

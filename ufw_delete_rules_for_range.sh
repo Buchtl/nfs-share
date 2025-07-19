@@ -22,3 +22,4 @@ do
   sudo ufw delete $i
 done
 
+sudo ufw reload

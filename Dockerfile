@@ -7,8 +7,7 @@ RUN apt update -y \
 
 RUN apt install -y nfs-kernel-server
 
-RUN groupadd nfs \
-    && echo ${PASSWORD} | openssl passwd -1 -stdin \
+RUN echo ${PASSWORD} | openssl passwd -1 -stdin \
     && ENCRPYTED_PASSWORD=`echo "${PASSWORD}" | openssl passwd -1 -stdin` \
     && useradd -rm -d /home/nfs -s /bin/bash -u 2000 nfs -p ${ENCRPYTED_PASSWORD}
 

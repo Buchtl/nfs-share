@@ -1,0 +1,10 @@
+
+
+services:
+  nfs-server:
+    image: nfs-server:01
+    build: .
+    ports:
+      - 112:111
+      - 2050:2049
+

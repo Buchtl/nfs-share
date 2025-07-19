@@ -7,8 +7,11 @@ services:
     container_name: nfs-server
     privileged: true
     ports:
-      - "0.0.0.0:111:111"
-      - "0.0.0.0:2049:2049"
-      - "0.0.0.0:20048:20048"
+    - "111:111/tcp"
+    - "111:111/udp"
+    - "2049:2049/tcp"
+    - "2049:2049/udp"
+    - "20048:20048/tcp"
+    - "20048:20048/udp"
     volumes:
       - /srv/nfs/shared/:/srv/nfs/shared/

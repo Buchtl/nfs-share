@@ -9,7 +9,7 @@ services:
     command: >
       sh -c "env | grep IP_NFS_SERVER && tail -f /dev/null"
     environment:
-      - IP_NFS_SERyVER=${IP_NFS_SERVER}
+      - IP_NFS_SERVER=${IP_NFS_SERVER}
     volumes:
       - nfs-filestorage:/filestorge
     deploy:

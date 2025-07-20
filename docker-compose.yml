@@ -14,5 +14,5 @@ volumes:
     driver: local
     driver_opts:
       type: "nfs"
-      o: "addr=192.168.2.142,nfsvers=4,hard,rw"
+      o: "addr=${IP_NFS_SERVER},nfsvers=4,hard,rw"
       device: ":/srv/nfs/shared"
